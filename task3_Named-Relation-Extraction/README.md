@@ -1,1 +1,4 @@
-# Named Relation Extraction
+# Named Entity Recognition
+Modern Database Project 1 Task 3
+
+使⽤之前⽹络爬⾍得到的结果，对于每⼀条爬取到的新闻，识别出其标题和正⽂部分出现的实体关系，要求⾄少能够抽取出3种关系，实体关系类型不限，可⾃⾏定义，如可以是⼈与⼈之间的关系、⼈与机构之间的关系或者⼈与事件之间的关系等。

@@ -14,7 +14,7 @@ import pdb
 
 #关系类别
 relation2id = {}
-with codecs.open('relation2id.txt','r','utf-8') as input_data:
+with codecs.open('ChineseNRE/data/relation2id.txt','r','utf-8') as input_data:
     for line in input_data.readlines():
         relation2id[line.split()[0]] = int(line.split()[1])
     input_data.close()
@@ -28,7 +28,7 @@ positionE1 = deque()
 positionE2 = deque()
 count = [0,0,0,0,0,0,0,0,0,0,0,0]
 total_data=0
-with codecs.open('train.txt','r','utf-8') as tfc: 
+with codecs.open('ChineseNRE/data/train.txt','r','utf-8') as tfc: 
     for lines in tfc:
         line = lines.split()
         if count[relation2id[line[2]]] <1500: #训练数据  这个是不是不能随便改 改了会改变训练模型用到的word2id的长度？是的！！！！
@@ -108,7 +108,7 @@ labels = deque()
 positionE1 = deque()
 positionE2 = deque()
 # count = [0,0,0,0,0,0,0,0,0,0,0,0]
-with codecs.open('/home/rl/task2/task3_cands.txt','r','utf-8') as tfc:  #记得改路径
+with codecs.open('task3_cands.txt','r','utf-8') as tfc:  #记得改路径
     for lines in tfc:
         line = lines.split(" #||# ") #第一步生成txt文件的时候(@task3_step1.py)设置的特殊分隔符
         # if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800: #测试数据
@@ -145,7 +145,7 @@ positionE2 = np.asarray(list(df_data['positionE2'].values))
 
 
 import pickle
-with open('../task3_cands_features.pkl', 'wb') as outp:
+with open('task3_cands_features.pkl', 'wb') as outp:
 	pickle.dump(datas, outp)
 	pickle.dump(positionE1, outp)
 	pickle.dump(positionE2, outp)

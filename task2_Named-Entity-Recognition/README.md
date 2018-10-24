@@ -1,8 +1,7 @@
 # Jieba-based-NER
 Modern Database Project 1 Task 2
 
-Jieba based Named Entity Recognition
+Named Entity Recognition
 
-使⽤之前⽹络爬⾍(https://github.com/LeiRui/Sina-News-Crawler.git
-)得到的结果，对于每⼀条爬取到的新闻，识别出其标题和正⽂内容中出现的⼈名、地名、机构名、事件名和专有名词等。⼈名和地名为必做项，机构名、事件名、专有名词等其它类型的实体为选做项（额外分判定依据之⼀），全部的识别结果保存在⼀个xml⽂件中（格式⾃定义，要合理）。
+使⽤任务一⽹络爬⾍得到的结果，对于每⼀条爬取到的新闻，识别出其标题和正⽂内容中出现的⼈名、地名、机构名、事件名和专有名词等。⼈名和地名为必做项，机构名、事件名、专有名词等其它类型的实体为选做项（额外分判定依据之⼀），全部的识别结果保存在⼀个xml⽂件中（格式⾃定义，要合理）。
 

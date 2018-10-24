@@ -6,7 +6,7 @@
 ⼀个xml⽂件（格式⾃定义，要合理）中，以供下⼀步实验使⽤。
 
 本次作业基于新浪新闻（https://news.sina.com.cn/），
-覆盖五种主题："国内","国际","社会","军事","评论"，
+覆盖五种主题："国内","国际"（注：缺）,"社会"（注：缺）,"军事"（注：缺）,"评论"（注：缺），
 每条新闻抓取八种信息：主题、原⽹⻚地址、标题、时间、正⽂内容、责任编辑、来源、图片。
 
 本代码技术路线：解析真实地址抓取 @https://zhuanlan.zhihu.com/p/31127887
@@ -121,7 +121,8 @@ def start():
 if __name__=='__main__':
     #topicList=["国内","国际","社会","军事","评论"]
     topicList=["国内","国际"]
+    # 注：url不稳定
     URLtopicList=["http://api.roll.news.sina.com.cn/zt_list?channel=news&cat_1=gnxw&cat_2==gdxw1||=gatxw||=zs-pl||=mtjj&level==1||=2&show_ext=1&show_all=1&show_num=22&tag=1&format=json&page={}",
     "http://api.roll.news.sina.com.cn/zt_list?channel=news&cat_1=gjxw&level==1||=2&show_ext=1&show_all=1&show_num=20&tag=1&format=json&page={}"]
-    xmlFilePath="task1_out.xml"
+    xmlFilePath="task1_out_deprecated.xml"
     start()

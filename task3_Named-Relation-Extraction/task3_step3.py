@@ -20,17 +20,17 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-model = torch.load('/home/rl/ChineseNRE/model/model_epoch60.pkl') #TODO 模型要提供一个训练好的吧?
+model = torch.load('ChineseNRE/model_trained/model_01.pkl') #TODO 模型要提供一个训练好的吧?
 
 #模型的输入
-with open('./data/task3_cands_features.pkl', 'rb') as inp:
+with open('task3_cands_features.pkl', 'rb') as inp:
     test = pickle.load(inp)
     position1_t = pickle.load(inp)
     position2_t = pickle.load(inp)
 
 #类别id到关系名的映射
 id2relation = {}
-with codecs.open('./data/people-relation/relation2id.txt','r','utf-8') as input_data:
+with codecs.open('ChineseNRE/data/relation2id.txt','r','utf-8') as input_data:
     for line in input_data.readlines():
         id2relation[int(line.split()[1])] = line.split()[0]
     input_data.close()
@@ -75,7 +75,7 @@ print len(resY)
 infoOutput={}
 # 将结果保存到xml文件
 cnt=0
-with codecs.open('/home/rl/task2/task3_cands.txt','r','utf-8') as tfc:  #记得改路径
+with codecs.open('task3_cands.txt','r','utf-8') as tfc:  #记得改路径
     for lines in tfc:
         # print lines
         line = lines.split(" #||# ") #第一步生成txt文件的时候(@task3_step1.py)设置的特殊分隔符

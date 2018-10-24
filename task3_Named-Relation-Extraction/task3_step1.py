@@ -12,7 +12,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 f=open('task3_cands.txt','w')
-tree = ET.parse('task2_out.xml')
+tree = ET.parse('../task2_Named-Entity-Recognition/task2_out.xml')
 root = tree.getroot()
 for child in root.getchildren(): #一条新闻
 	url=child.attrib['name']

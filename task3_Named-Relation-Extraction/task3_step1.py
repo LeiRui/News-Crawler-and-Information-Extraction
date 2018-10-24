@@ -32,6 +32,7 @@ for child in root.getchildren(): #一条新闻
 					entity1=sentence[int(start1):int(end1)]
 					entity2=sentence[int(start2):int(end2)]
 					if entity1==entity2:
+						print entity1
 						continue  #一句话里同一个人名出现两次及以上，不考虑它们之间的关系
 					f.write(entity1+" #||# "+entity2+" #||# "+sentence+" #||# "+url+"\n")		
 f.close()

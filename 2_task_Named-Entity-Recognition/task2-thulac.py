@@ -31,7 +31,7 @@ def cut_sentences(sentence):
             tmp = []
     yield ''.join(tmp)
 
-# func specialized for thulac
+# function specialized for thulac
 def replaceSpace(s):
     tmp="/".join(s.split(" ")) #English space
     return "/".join(tmp.split("　")) #Chinese space

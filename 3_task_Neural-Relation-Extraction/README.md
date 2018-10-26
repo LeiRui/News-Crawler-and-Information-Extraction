@@ -1,4 +1,4 @@
-# Named Entity Recognition
+# Neural Relation Extraction
 Modern Database Project 1 Task 3
 
 ## Task Description

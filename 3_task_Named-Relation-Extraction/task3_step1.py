@@ -1,6 +1,6 @@
 #coding=utf-8
 '''
-第一步：对task2_out.xml信息加以整理，提取出一个task3_cands.txt文件，txt文件中一行表示新闻某一个句子包含的实体对信息，格式为:
+第一步：对task2_out.xml信息加以整理，提取出一个task3_step1_out.txt文件，txt文件中一行表示新闻某一个句子包含的实体对信息，格式为:
 [句中实体1的名字，句中实体2的名字，完整句子内容，句子所属的新闻url]。 
 '''
 import xml.etree.ElementTree as ET
@@ -29,6 +29,6 @@ for child in root.getchildren(): #一条新闻
 					entity1=sentence[int(start1):int(end1)]
 					entity2=sentence[int(start2):int(end2)]
 					if entity1==entity2:
-						continue  #一句话里同一个人名出现两次及以上，不考虑它们之间的关系
+						continue  #如果一句话里同一个人名出现两次及以上，不考虑相同人名之间的关系
 					f.write(entity1+" #||# "+entity2+" #||# "+sentence+" #||# "+url+"\n")		
 f.close()

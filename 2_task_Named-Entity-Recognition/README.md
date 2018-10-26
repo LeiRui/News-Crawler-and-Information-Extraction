@@ -19,4 +19,3 @@ python task2-thulac.py
 ```
 mv task2_out.xml out-safe/.
 ```
-

@@ -1,9 +1,10 @@
 #coding:utf8
 '''
-第二步：将task3_cands.txt数据处理成task3_cands_features.pkl文件，以便于下一步输入模型。 (模型输入特征使用词向量+位置向量。)
+第二步：参考ChineseNRE/data/people-relation/data_util.py写法，
+将task3_step1_out.txt数据处理成task3_step2_out.pkl文件，包含特征：词向量和位置向量，以便于下一步输入模型。 (模型输入特征使用词向量+位置向量。)
 
 参考链接:
-[1] https://github.com/buppt/ChineseNRE
+[1] https://github.com/buppt/ChineseNRE   
 '''
 import codecs
 import sys
@@ -31,19 +32,19 @@ total_data=0
 with codecs.open('ChineseNRE/data/people-relation/train.txt','r','utf-8') as tfc: 
     for lines in tfc:
         line = lines.split()
-        if count[relation2id[line[2]]] <1500: #训练数据  这个是不是不能随便改 改了会改变训练模型用到的word2id的长度？是的！！！！
+        if count[relation2id[line[2]]] <1500: #训练数据 这个不能随便改 
             sentence = []
-            index1 = line[3].index(line[0]) #TODO 我直接有记录实体的start end
+            index1 = line[3].index(line[0])
             position1 = []
-            index2 = line[3].index(line[1]) #TODO 我直接有记录实体的start end
+            index2 = line[3].index(line[1])
             position2 = []
 
             for i,word in enumerate(line[3]): #遍历句子中的每一个字word
                 sentence.append(word)
-                position1.append(i-3-index1) #每一个字到第1个实体的距离 为什么要-3？
-                position2.append(i-3-index2) #每一个字到第2个实体的距离 为什么要-3？
-                i+=1 #为什么这里要加i 不是有enumerate吗
-            datas.append(sentence) #把一句话装进队列，不过为什么不直接用line[3]？
+                position1.append(i-3-index1)
+                position2.append(i-3-index2)
+                i+=1
+            datas.append(sentence)
             labels.append(relation2id[line[2]]) #关系类别
             positionE1.append(position1) #把这句话每个字产生的到第1个实体的距离向量加到队列中
             positionE2.append(position2) #把这句话每个字产生的到第2个实体的距离向量加到队列中
@@ -108,7 +109,7 @@ labels = deque()
 positionE1 = deque()
 positionE2 = deque()
 # count = [0,0,0,0,0,0,0,0,0,0,0,0]
-with codecs.open('task3_step1_out.txt','r','utf-8') as tfc:  #记得改路径
+with codecs.open('task3_step1_out.txt','r','utf-8') as tfc:
     for lines in tfc:
         line = lines.split(" #||# ") #第一步生成txt文件的时候(@task3_step1.py)设置的特殊分隔符
         # if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800: #测试数据

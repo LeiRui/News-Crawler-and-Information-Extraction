@@ -10,18 +10,18 @@ Modern Database Project 1 Task 3
 然后按顺序直接依次执行下述三个python文件即可得到最终的关系抽取结果task3_out.xml。
 
 ### task3_step1.py
-作用是从任务2命名实体识别的结果中提取人名实体并整理成规定的格式：[句子S中的人名A，句子S中的人名B，句子S]，供下一步使用。
+作用是从任务2命名实体识别的结果中提取人名实体并整理成规定的格式：[句中实体1的名字，句中实体2的名字，完整句子内容，句子所属的新闻url]，供下一步使用。
 
 输入的数据来自`2_task-Named-Entity-Recognition/out-safe/task2_out.xml`，输出`task3_step1_out.txt`。
 
 ### task3_step2.py
-作用是参考`ChineseNRE/data/people-relation/data_util.py`写法，把txt输入数据处理成pkl文件供下一步的模型使用。
+作用是参考`ChineseNRE/data/people-relation/data_util.py`写法，把txt输入数据处理成pkl文件，包含特征：词向量和位置向量，供下一步的模型使用。
 
 输入的数据为`task3_step1_out.txt`，输出`task3_step2_out.pkl`。
 
 ### task3_step3.py
 作用是通过模型得到输入的实体对之间的关系类别输出。
 
-输入的数据为`task3_step2_out.xml`，使用的训练好的模型来自`ChineseNRE/model_trained/model_01.pkl`。这个模型是通过在本地运行ChineseNRE项目 (https://github.com/buppt/ChineseNRE) 代码训练得到的，具体的训练过程参见它的README。
+输入的数据为`task3_step1_out.txt`和`task3_step2_out.pkl`，输出`task3_out.xml`。使用的训练好的模型来自`ChineseNRE/model_trained/model_01.pkl`。这个模型是通过在本地运行ChineseNRE项目 (https://github.com/buppt/ChineseNRE) 代码训练得到的，具体的训练过程参见它的README。
 
 

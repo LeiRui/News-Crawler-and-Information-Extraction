@@ -14,7 +14,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data as D
 from torch.autograd import Variable
-from BiLSTM_ATT import BiLSTM_ATT
+from ChineseNRE.BiLSTM_ATT import BiLSTM_ATT
 
 import sys
 reload(sys)

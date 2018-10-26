@@ -31,12 +31,17 @@ def cut_sentences(sentence):
             tmp = []
     yield ''.join(tmp)
 
+# func specialized for thulac
+def replaceSpace(s):
+    tmp="/".join(s.split(" ")) #English space
+    return "/".join(tmp.split("　")) #Chinese space
+
 
 tree = ET.parse('../1_task_News-Crawler/out-safe/task1_out.xml')
 root = tree.getroot()
 infoOutput={}
 thu1 = thulac.thulac()  #默认模式
-for i in range(0,1): #遍历每一类主题新闻
+for i in range(0,5): #遍历每一类主题新闻
 	NewsGroup=root[i] #得到某一类主题新闻的所有数据
 	news=NewsGroup.getchildren()
 	# print len(news)
@@ -49,6 +54,7 @@ for i in range(0,1): #遍历每一类主题新闻
 		sentenceInfo={'sentence':title} #初始化sentenceInfo
 		sentenceInfo['thulac']={'np':[],'ns':[],'ni':[],'nz':[]}
 		# words =pseg.cut(title) #命名实体识别 @jieba词性标注
+                title=replaceSpace(title)
 		words = thu1.cut(title, text=False)  #进行一句话分词，返回一个二维数组([[word, tag]..])
 		pos=0
 		for w in words:
@@ -65,11 +71,13 @@ for i in range(0,1): #遍历每一类主题新闻
 				sentenceInfo={'sentence':scontent} #初始化sentenceInfo
 				sentenceInfo['thulac']={'np':[],'ns':[],'ni':[],'nz':[]}
 				# words =pseg.cut(scontent) #命名实体识别 @jieba词性标注
+                                scontent=replaceSpace(scontent)
 				words = thu1.cut(scontent, text=False)  #进行一句话分词，返回一个二维数组([[word, tag]..])
 				pos=0
 				for w in words:
 					if w[1] in ('np' , 'ns' , 'ni' , 'nz'): # np/人名 ns/地名 ni/机构名 nz/其它专名
 						sentenceInfo['thulac'][w[1]].append({'start':pos,'end':pos+len(w[0].decode('utf-8'))})
+                                                # print w[1],w[0],w[0].decode('utf-8')
 					pos+=len(w[0].decode('utf-8'))
 				infoOutput[url].append(copy.deepcopy(sentenceInfo))
 

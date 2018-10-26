@@ -4,9 +4,6 @@
 [句中实体1的名字，句中实体2的名字，完整句子内容，句子所属的新闻url]。 
 '''
 import xml.etree.ElementTree as ET
-from dicttoxml import dicttoxml
-import jieba.posseg as pseg
-import copy
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')

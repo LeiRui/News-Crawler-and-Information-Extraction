@@ -8,7 +8,11 @@ Modern Database Project 1 Task 3
 代码用到pandas和pytorch，pytorch下载方法直接参见 https://pytorch.org/ 。
 
 然后按顺序直接依次执行下述三个python文件即可得到最终的关系抽取结果task3_out.xml。
-
+```
+python task3_step1.py
+python task3_step2.py
+python task3_step3.py
+```
 ### task3_step1.py
 作用是从任务2命名实体识别的结果中提取人名实体并整理成规定的格式：[句中实体1的名字，句中实体2的名字，完整句子内容，句子所属的新闻url]，供下一步使用。
 
